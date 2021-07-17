@@ -3,5 +3,14 @@
         "activityBar.background": "#1B3040",
         "titleBar.activeBackground": "#264359",
         "titleBar.activeForeground": "#F7FAFC"
-    }
+    },
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "editor.formatOnSave": true,
+    "eslint.alwaysShowStatus": true,
+    "eslint.validate": [
+        "typescript"
+    ],
+    "files.autoSave": "onFocusChange",
 }
