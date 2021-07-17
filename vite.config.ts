@@ -1,7 +1,19 @@
-import { defineConfig } from 'vite'
-import reactRefresh from '@vitejs/plugin-react-refresh'
+import { ConfigEnv, defineConfig, loadEnv } from 'vite';
+
+import reactRefresh from '@vitejs/plugin-react-refresh';
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [reactRefresh()]
-})
+
+export default ({ command, mode }: ConfigEnv) => {
+  console.log('vite execute command: ', command);
+  process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
+
+  const port = Number.parseInt(process.env.VITE_PORT) || 9000;
+
+  return defineConfig({
+    plugins: [reactRefresh()],
+    server: {
+      port,
+    },
+  });
+};
