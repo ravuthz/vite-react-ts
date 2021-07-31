@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import './index.css';
-import App from './components/App';
+import 'antd/dist/antd.css';
+
+import AdminPage from './pages/AdminPage/AdminPage';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AdminPage />
   </React.StrictMode>,
   document.getElementById('root'),
 );
