@@ -1,0 +1,17 @@
+import React, { memo, createContext, useContext, useState } from 'react';
+
+const {{pascalCase name}}Context = createContext({});
+
+export const {{pascalCase name}}Provider = memo((props) => {
+  const [state, setState] = useState<any>();
+
+  const value = {
+    state,
+    setState,
+    displayName: '{{pascalCase name}}Provider',
+  };
+
+  return <{{pascalCase name}}Context.Provider value={value} {...props} />;
+});
+
+export const use{{pascalCase name}}Ctx = () => useContext({{pascalCase name}}Context);

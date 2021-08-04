@@ -1,0 +1,19 @@
+const {{pascalCase name}}Service = () => {
+  let privateValue = 0;
+
+  return {
+    getPrivateValue: () => {
+      return privateValue;
+    },
+    setPrivateValue: (value: any) => {
+      privateValue = value;
+      return this;
+    },
+  };
+};
+
+const singleton = {{pascalCase name}}Service();
+
+Object.freeze(singleton);
+
+export default singleton;

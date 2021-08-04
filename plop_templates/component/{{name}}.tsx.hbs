@@ -1,0 +1,27 @@
+import React, { useEffect, useState } from 'react';
+
+import classes from './{{name}}.module.css';
+
+const {{pascalCase name}}: React.FC = (props: any) => {
+  const [state, setState] = useState<any>({});
+
+  useEffect(() => {
+    console.log('{{pascalCase name}} mounted');
+
+    return () => {
+      console.log('{{pascalCase name}} unmounted');
+    };
+  }, []);
+
+  useEffect(() => {
+    console.log('useEffect.{{pascalCase name}}: ', props);
+  }, [props]);
+
+  return (
+    <div data-testid="{{pascalCase name}}" className={ classes.{{pascalCase name}} }>
+      <h1>{{pascalCase name}}</h1>
+    </div>
+  );
+};
+
+export default {{pascalCase name}};

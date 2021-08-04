@@ -1,0 +1,15 @@
+import React, { useEffect, useState } from 'react';
+
+import classes from './{{name}}.module.css';
+
+const {{pascalCase name}} = (props: any) => {
+  const [state, setState] = useState<any>({});
+
+  return (
+    <div data-testid="{{pascalCase name}}" className={ classes.{{pascalCase name}} }>
+      {props.children}
+    </div>
+  );
+};
+
+export default {{pascalCase name}};

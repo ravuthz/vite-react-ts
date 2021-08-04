@@ -1,0 +1,14 @@
+import React, { useEffect, useState } from 'react';
+
+export const use{{pascalCase name}} = (props: any) => {
+  const [state, setState] = useState<any>();
+
+  useEffect(() => {
+    console.log('{{pascalCase name}} mounted');
+    return () => {
+      console.log('{{pascalCase name}} unmounted');
+    };
+  }, []);
+
+  return { state, setState };
+};
