@@ -1,14 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 import './index.css';
 import 'antd/dist/antd.css';
 
-import AdminPage from './pages/AdminPage/AdminPage';
+import App from './components/App';
 
+// <React.StrictMode>
 ReactDOM.render(
-  <React.StrictMode>
-    <AdminPage />
-  </React.StrictMode>,
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
   document.getElementById('root'),
 );

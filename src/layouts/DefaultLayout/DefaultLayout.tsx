@@ -1,49 +1,72 @@
-import React, { useRef, useState } from 'react';
-import { Layout, Menu, Breadcrumb } from 'antd';
+import React, { useEffect } from 'react';
+import { Link, Switch } from 'react-router-dom';
 import {
-  MenuUnfoldOutlined,
-  MenuFoldOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined,
+  HomeOutlined,
+  DashboardOutlined,
+  DatabaseOutlined,
+  ContainerOutlined,
+  ShopOutlined,
+  TagsOutlined,
+  CheckSquareOutlined,
 } from '@ant-design/icons';
 
+import { RouteWithChildren } from '../../routes';
+import BaseLayout from '../BaseLayout/BaseLayout';
 import './DefaultLayout.css';
 
-const { SubMenu } = Menu;
-const { Header, Content, Sider } = Layout;
+const menus = [
+  {
+    key: '/',
+    icon: <HomeOutlined />,
+    title: <Link to="/">Home</Link>,
+  },
+  {
+    key: '/admin',
+    icon: <DashboardOutlined />,
+    title: 'Admin',
+    menus: [
+      {
+        key: '/admin/',
+        icon: <HomeOutlined />,
+        title: <Link to="/admin">Home</Link>,
+      },
+      {
+        key: '/admin/category',
+        icon: <DatabaseOutlined />,
+        title: <Link to="/admin/category">Category</Link>,
+      },
+      {
+        key: '/admin/products',
+        icon: <ContainerOutlined />,
+        title: <Link to="/admin/products">Products</Link>,
+      },
+    ],
+  },
+  {
+    key: '/category',
+    icon: <ShopOutlined />,
+    title: <Link to="/category">Category</Link>,
+  },
+  {
+    key: '/products',
+    icon: <TagsOutlined />,
+    title: <Link to="/products">Products</Link>,
+  },
+];
 
 const DefaultLayout: React.FC = (props: any) => {
-  const [collapsed, setCollapsed] = useState<boolean>(false);
-
-  const toggle = () => setCollapsed((collapsed: boolean) => !collapsed);
+  useEffect(() => {
+    document.title = 'Main Page';
+  }, []);
 
   return (
-    <Layout className="contaier-layout">
-      <Sider trigger={null} collapsible collapsed={collapsed}>
-        <div className="logo" />
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-          <Menu.Item key="1" icon={<UserOutlined />}>
-            nav 1
-          </Menu.Item>
-          <Menu.Item key="2" icon={<VideoCameraOutlined />}>
-            nav 2
-          </Menu.Item>
-          <Menu.Item key="3" icon={<UploadOutlined />}>
-            nav 3
-          </Menu.Item>
-        </Menu>
-      </Sider>
-      <Layout className="site-layout">
-        <Header className="site-layout-header site-layout-background">
-          {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-            className: 'trigger',
-            onClick: toggle,
-          })}
-        </Header>
-        <Content className="site-layout-content site-layout-background">{props.children}</Content>
-      </Layout>
-    </Layout>
+    <BaseLayout menus={menus} {...props}>
+      <Switch>
+        {props?.routes?.map((route: any, i: any) => (
+          <RouteWithChildren key={i} {...route} />
+        ))}
+      </Switch>
+    </BaseLayout>
   );
 };
 
