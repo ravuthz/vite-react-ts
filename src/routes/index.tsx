@@ -2,6 +2,8 @@ import React from 'react';
 
 import { AdminLayout, DefaultLayout } from '../layouts';
 import { RouteWithChildren } from '../components/shared';
+import Todo from '../components/Todo';
+import AppStorage from '../components/AppStorage/AppStorage';
 
 const AdminCategory: React.FC = () => <h1>AdminCategory</h1>;
 const AdminProducts: React.FC = () => <h1>AdminProducts</h1>;
@@ -36,6 +38,18 @@ const routes = [
         path: '/products',
         component: Products,
       },
+      {
+        path: '/todos/:id',
+        component: Todo,
+      },
+      {
+        path: '/todos',
+        component: Todo,
+      },
+      {
+        path: '/storages',
+        component: AppStorage,
+      }
     ],
   },
 ];

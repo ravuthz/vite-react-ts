@@ -52,6 +52,16 @@ const menus = [
     icon: <TagsOutlined />,
     title: <Link to="/products">Products</Link>,
   },
+  {
+    key: '/todos',
+    icon: <CheckSquareOutlined />,
+    title: <Link to="/todos">Todos</Link>,
+  },
+  {
+    key: '/storages',
+    icon: <CheckSquareOutlined />,
+    title: <Link to="/storages">Storages</Link>,
+  },
 ];
 
 const DefaultLayout: React.FC = (props: any) => {
