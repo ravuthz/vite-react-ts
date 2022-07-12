@@ -1,0 +1,9 @@
+/build
+/dist
+/node_modules
+.github
+*-lock.*
+*.lock
+
+.npmrc
+coverage
