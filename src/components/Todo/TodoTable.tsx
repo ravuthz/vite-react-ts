@@ -8,6 +8,12 @@ const TodoTable: React.FC<any> = (props: any): any => {
 
   const columns = [
     {
+      key: 'id',
+      title: 'ID',
+      dataIndex: 'id',
+      sorter: (a: any, b: any) => a.id - b.id,
+    },
+    {
       key: 'title',
       title: 'Todo',
       dataIndex: 'title',

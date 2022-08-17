@@ -1,4 +1,4 @@
-import { Checkbox, Col, Form, Input, Modal } from 'antd';
+import { Checkbox, Col, Form, Input, Modal, Spin } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useTodoQuery } from '../../hooks';
@@ -19,11 +19,12 @@ const TodoForm: React.FC<any> = ({ dataSource }: any) => {
   useEffect(() => {
     console.log('params: ', id);
     if (id) {
+      form.setFieldsValue(dataSource);
       setVisible(true);
     } else {
       setVisible(false);
     }
-  }, [id]);
+  }, [id, dataSource]);
 
   const onOk = () => {
     form.submit();
@@ -69,7 +70,7 @@ const TodoForm: React.FC<any> = ({ dataSource }: any) => {
         destroyOnClose={true}
         wrapClassName="todo-form-modal"
       >
-        <Form form={form} layout="inline" name="todo_form" initialValues={dataSource} onFinish={onFinish}>
+        <Form form={form} layout="inline" name="todo_form" onFinish={onFinish}>
           <Col span="18">
             <Form.Item name="title" rules={[{ required: true, message: 'Please input todo!' }]}>
               <Input style={{ width: '100%' }} placeholder="Enter your todo title" />
